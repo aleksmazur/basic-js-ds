@@ -39,10 +39,14 @@ class Queue {
 
   dequeue() {
     let current = this.value;
-
-    this.value = this.value.next;
-    this.next--;
-    return current.value;
+    if (this.next) {
+      this.value = this.next.value;
+      this.next = this.next.next;
+    } else {
+      this.value = null;
+      this.next = null
+    }
+    return current;
   }
 }
 
